@@ -21,10 +21,6 @@
 # .idea/dynamic.xml
 # .idea/uiDesigner.xml
 
-# Gradle:
-# .idea/gradle.xml
-# .idea/libraries
-
 # Mongo Explorer plugin:
 # .idea/mongoSettings.xml
 
@@ -32,12 +28,11 @@
 *.ipr
 *.iws
 
-## Plugin-specific files:
+# Compiled java
+*.class
 
-# IntelliJ
-/out/
-/gradle/
-/build/
+# Maven
+target/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/

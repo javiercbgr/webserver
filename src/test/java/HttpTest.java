@@ -7,10 +7,12 @@ import org.junit.*;
 public class HttpTest {
 
     private Thread server;
+    private int port;
 
     @Before
     public void setUp() {
-        server = new Thread(new WebServer(52052, 4, new FileServingApp("web/")));
+        port = 52052;
+        server = new Thread(new WebServer(port, 4, new FileServingApp("web/")));
         server.start();
     }
 
@@ -22,13 +24,13 @@ public class HttpTest {
     @Test
     public void testGetRequests() {
         final WebClient webClient = new WebClient();
-        webClient.setThrowExceptionOnFailingStatusCode(false);
+        webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
 
         try {
-            Page unexpectedResult = webClient.getPage("http://127.0.0.1:52052");
+            Page unexpectedResult = webClient.getPage("http://127.0.0.1:" + port);
             Assert.assertEquals(403, unexpectedResult.getWebResponse().getStatusCode());
 
-            Page successfulResult = webClient.getPage("http://127.0.0.1:52052/index.html");
+            Page successfulResult = webClient.getPage("http://127.0.0.1:" + port + "/index.html");
             Assert.assertEquals(200, successfulResult.getWebResponse().getStatusCode());
         } catch (Exception e) {
             e.printStackTrace();
