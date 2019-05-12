@@ -11,7 +11,7 @@ public class HttpTest {
 
     @Before
     public void setUp() {
-        port = 52052;
+        port = 52051;
         server = new Thread(new WebServer(port, 4, new FileServingApp("web/")));
         server.start();
     }

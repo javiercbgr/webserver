@@ -87,7 +87,7 @@
 	                    <configuration>
 	                        <mainClass>me.homework.Main</mainClass>
         					<arguments>
-		                        <argument>12000</argument>
+		                        <argument>52052</argument>
 		                        <argument>10</argument>
 		                        <argument>.</argument>
         					</arguments>

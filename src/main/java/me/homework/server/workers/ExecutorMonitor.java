@@ -1,6 +1,7 @@
 package me.homework.server.workers;
 
 import me.homework.server.helpers.Logger;
+import me.homework.server.helpers.PerformanceStats;
 
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -25,7 +26,8 @@ public class ExecutorMonitor implements Runnable {
                         executor.getCompletedTaskCount(),
                         executor.getTaskCount(),
                         executor.getQueue().size()));
-                Thread.sleep(10000);
+                Logger.info("Average request handling time: " + PerformanceStats.getAverageHandlingTime());
+                Thread.sleep(2000);
             } while (true);
         } catch (InterruptedException e) {
             Logger.error(e.getMessage());

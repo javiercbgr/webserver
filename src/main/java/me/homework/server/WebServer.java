@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class WebServer implements Runnable {
 
+    public final static String TAG = "me.homework.server.WebServer";
     public final static String SERVER_NAME = "WebServer/0.1";
 
     private final int port;
@@ -50,7 +51,7 @@ public class WebServer implements Runnable {
 
         while (true) {
             try {
-                pool.execute(new Thread(new Handler(server.accept(), app)));
+                pool.execute(new Handler(server.accept(), app));
             } catch (IOException e) {
                 Logger.error(e.getMessage());
             }

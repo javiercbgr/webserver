@@ -25,10 +25,12 @@ public class Handler implements Runnable {
     private Socket connection;
     private InputStream in;
     private OutputStream out;
+    private long creationTime;
 
     public Handler(Socket socket, WebApp app) {
         this.connection = socket;
         this.app = app;
+        this.creationTime = System.currentTimeMillis();
     }
 
     @Override
@@ -53,6 +55,8 @@ public class Handler implements Runnable {
                 response.getHeaders().put("Connection", "close"); // TODO Add keep-alive connections?
 
                 response.write(out);
+                int handlingTime = (int) (System.currentTimeMillis() - this.creationTime);
+                PerformanceStats.recordHandlingTime(handlingTime);
             } else {
                 Logger.error("Server accepts only HTTP protocol.");
                 new RawHttpRequest(501, "Server only accepts HTTP protocol").write(out);
