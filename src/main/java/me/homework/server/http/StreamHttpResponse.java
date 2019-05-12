@@ -15,8 +15,6 @@ import java.util.HashMap;
  */
 public class StreamHttpResponse extends HttpResponse {
 
-    private final static String TAG = "me.homework.server.http.StreamHttpResponse";
-
     /**
      * Stream to be sent to the user.
      */
@@ -57,7 +55,7 @@ public class StreamHttpResponse extends HttpResponse {
 
             writer.flush();
         } catch (IOException e) {
-            Logger.error(TAG, e.getMessage());
+            Logger.error(e.getMessage());
         }
     }
 }

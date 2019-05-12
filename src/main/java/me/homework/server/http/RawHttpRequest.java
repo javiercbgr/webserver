@@ -15,8 +15,6 @@ import java.util.HashMap;
  */
 public class RawHttpRequest extends HttpResponse {
 
-    private final static String TAG = "me.homework.server.http.RawHttpRequest";
-
     private String content;
 
     public RawHttpRequest(int statusCode, String content) {
@@ -47,7 +45,7 @@ public class RawHttpRequest extends HttpResponse {
 
             writer.flush();
         } catch (IOException e) {
-            Logger.error(TAG, e.getMessage());
+            Logger.error(e.getMessage());
         }
     }
 

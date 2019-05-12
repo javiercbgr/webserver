@@ -13,8 +13,6 @@ import java.util.HashMap;
  */
 public class FileHttpResponse extends HttpResponse {
 
-    private static String TAG = "me.homework.server.http.FileHttpResponse";
-
     /**
      * File to be sent to the user.
      */
@@ -30,7 +28,7 @@ public class FileHttpResponse extends HttpResponse {
             this.setContentType();
             this.setContentLength();
         } catch (IOException e) {
-            Logger.error(TAG, e.getMessage());
+            Logger.error(e.getMessage());
         }
     }
 
@@ -63,7 +61,7 @@ public class FileHttpResponse extends HttpResponse {
 
             writer.flush();
         } catch (IOException e) {
-            Logger.error(TAG, e.getMessage());
+            Logger.error(e.getMessage());
         }
     }
 

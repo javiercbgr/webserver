@@ -2,29 +2,20 @@ package me.homework.server.helpers;
 
 import java.util.Calendar;
 
-/**
- * Created by Mihail on 10/25/2015.
- */
 public class Logger {
 
-    public static void info(String tag, String content) {
-        System.out.println("["
-                + Calendar.getInstance().getTime().toString()
-                + "] "
-                + tag
-                + " - "
-                + content
-        );
+    private static String makeLogString(String s) {
+        StackTraceElement[] st = Thread.currentThread().getStackTrace();
+        String callerClass = st[st.length - 2].getClassName();
+        return String.format("[%s] %s - %s", Calendar.getInstance().getTime(), 
+            callerClass, s);
     }
 
-    public static void error(String tag, String content) {
-        System.err.println("["
-                        + Calendar.getInstance().getTime().toString()
-                        + "] "
-                        + tag
-                        + " ERROR - "
-                        + content
-        );
+    public static void info(String msg) {
+        System.out.println(makeLogString(msg));
     }
 
+    public static void error(String msg) {
+        System.err.println(makeLogString(msg));
+    }
 }

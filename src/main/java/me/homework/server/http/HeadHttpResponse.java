@@ -12,8 +12,6 @@ import java.nio.file.Paths;
  */
 public class HeadHttpResponse extends FileHttpResponse {
 
-    private static String TAG = "HeadHttpResponse";
-
     /**
      * File to be sent to the user.
      */
@@ -42,7 +40,7 @@ public class HeadHttpResponse extends FileHttpResponse {
 
             writer.flush();
         } catch (IOException e) {
-            Logger.error(TAG, e.getMessage());
+            Logger.error(e.getMessage());
         }
     }
 }

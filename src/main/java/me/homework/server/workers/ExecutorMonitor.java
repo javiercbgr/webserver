@@ -9,8 +9,6 @@ import java.util.concurrent.ThreadPoolExecutor;
  */
 public class ExecutorMonitor implements Runnable {
 
-    private final static String TAG = "me.homework.server.workers.ExecutorMonitor";
-
     private ThreadPoolExecutor executor;
 
     public ExecutorMonitor(ThreadPoolExecutor pool) {
@@ -20,7 +18,7 @@ public class ExecutorMonitor implements Runnable {
     public void run() {
         try {
             do {
-                Logger.info(TAG, String.format("[%d/%d] Active: %d, Completed: %d, Task: %d, queueSize: %d",
+                Logger.info(String.format("[%d/%d] Active: %d, Completed: %d, Task: %d, queueSize: %d",
                         executor.getPoolSize(),
                         executor.getCorePoolSize(),
                         executor.getActiveCount(),
@@ -30,7 +28,7 @@ public class ExecutorMonitor implements Runnable {
                 Thread.sleep(10000);
             } while (true);
         } catch (InterruptedException e) {
-            Logger.error(TAG, e.getMessage());
+            Logger.error(e.getMessage());
         }
     }
 }

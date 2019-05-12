@@ -17,8 +17,6 @@ import java.util.HashMap;
  */
 public class HttpRequest {
 
-    private static final String TAG = "me.homework.server.http.HttpRequest";
-
     /**
      * Input stream associated with the source socket
      */
