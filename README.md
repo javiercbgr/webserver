@@ -35,13 +35,10 @@ that must be implemented is `HttpResponse handle(HttpRequest request)`.
 
 A compiled version `webserver-1.0-SNAPSHOT.jar` can be found in the root directory.
  
-`WebServer` - listens for connections and delegates them to worker threads.
-
-`Handler` - handles a single request, by parsing it and sending it to the handler application.
-
-`ExecutorMonitor` - prints server status once every 10 seconds.
-
-`FileServingApp` - an application that serves static files from it's document root.
+`WebServer` - listens for new connections or reuse an existing one and delegates them to worker threads. <br/>
+`Handler` - handles a single request, by parsing it and sending it to the handler application. <br/>
+`ExecutorMonitor` - prints server status once every 10 seconds. <br/>
+`FileServingApp` - an application that serves static files from it's document root.          
 
 ## Installation
 `mvn package`
