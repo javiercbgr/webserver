@@ -79,7 +79,7 @@
         					<arguments>
 		                        <argument>52052</argument>
 		                        <argument>10</argument>
-		                        <argument>.</argument>
+		                        <argument>web/</argument>
         					</arguments>
 	                    </configuration>
 	                </execution>

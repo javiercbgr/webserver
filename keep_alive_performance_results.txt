@@ -1,0 +1,129 @@
+# Created by Javier Cabero on 05/14/2019.
+#
+# This test results were generated using the `ab` command
+# found in keep_alive_performance.sh. They demonstrate the
+# superior performance of the keep-alive requests against
+# the ones without it.
+# 
+# The first part is the trace without keep-alive and after the
+# dash-line, the one with keep-alive. Check the 'Connection Times'
+# table for the timing of the requests.
+# 
+# Executed on a Macbook Pro with macOS Mojave, 2,9 GHz Intel Core i7
+# and 16 GB 2133 MHz LPDDR3 of RAM.
+
+# Without keep-alive.
+
+This is ApacheBench, Version 2.3 <$Revision: 1826891 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 192.168.1.22 (be patient)
+Completed 500 requests
+Completed 1000 requests
+Completed 1500 requests
+Completed 2000 requests
+Completed 2500 requests
+Completed 3000 requests
+Completed 3500 requests
+Completed 4000 requests
+Completed 4500 requests
+Completed 5000 requests
+Finished 5000 requests
+
+
+Server Software:        ebServer/0.1
+Server Hostname:        192.168.1.22
+Server Port:            52052
+
+Document Path:          /index.html
+Document Length:        152 bytes
+
+Concurrency Level:      15
+Time taken for tests:   6.256 seconds
+Complete requests:      5000
+Failed requests:        0
+Total transferred:      1455000 bytes
+HTML transferred:       760000 bytes
+Requests per second:    799.22 [#/sec] (mean)
+Time per request:       18.768 [ms] (mean)
+Time per request:       1.251 [ms] (mean, across all concurrent requests)
+Transfer rate:          227.12 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        3    8   4.1      7      41
+Processing:     4   11   4.3     10      46
+Waiting:        4   10   4.2      9      46
+Total:          9   19   6.0     18      57
+
+Percentage of the requests served within a certain time (ms)
+  50%     18
+  66%     19
+  75%     20
+  80%     21
+  90%     23
+  95%     26
+  98%     44
+  99%     48
+ 100%     57 (longest request)
+
+
+------------------------------------------------------------------------
+
+# With keep-alive.
+
+This is ApacheBench, Version 2.3 <$Revision: 1826891 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 192.168.1.22 (be patient)
+Completed 500 requests
+Completed 1000 requests
+Completed 1500 requests
+Completed 2000 requests
+Completed 2500 requests
+Completed 3000 requests
+Completed 3500 requests
+Completed 4000 requests
+Completed 4500 requests
+Completed 5000 requests
+Finished 5000 requests
+
+
+Server Software:        ebServer/0.1
+Server Hostname:        192.168.1.22
+Server Port:            52052
+
+Document Path:          /index.html
+Document Length:        152 bytes
+
+Concurrency Level:      15
+Time taken for tests:   3.993 seconds
+Complete requests:      5000
+Failed requests:        0
+Keep-Alive requests:    5000
+Total transferred:      1590000 bytes
+HTML transferred:       760000 bytes
+Requests per second:    1252.28 [#/sec] (mean)
+Time per request:       11.978 [ms] (mean)
+Time per request:       0.799 [ms] (mean, across all concurrent requests)
+Transfer rate:          388.89 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.3      0       7
+Processing:     4   12   4.0     12      49
+Waiting:        4   12   4.0     12      49
+Total:          4   12   4.1     12      49
+
+Percentage of the requests served within a certain time (ms)
+  50%     12
+  66%     12
+  75%     13
+  80%     13
+  90%     14
+  95%     16
+  98%     22
+  99%     35
+ 100%     49 (longest request)

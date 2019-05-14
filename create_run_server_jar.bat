@@ -7,4 +7,4 @@
 
 javac -cp src/main/java src/main/java/me/homework/*.java
 jar -cvfm webserver-1.0-SNAPSHOT.jar src/main/java/META-INF/MANIFEST.MF -C src/main/java .
-java -jar webserver-1.0-SNAPSHOT.jar 52052 10 . 
+java -jar webserver-1.0-SNAPSHOT.jar 52052 10 web/ 
