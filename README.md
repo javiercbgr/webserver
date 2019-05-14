@@ -9,6 +9,7 @@ Keep-alive implementation based on jrudolph's at GitHub:
 https://github.com/jrudolph/Pooling-web-server
 
 Main differences with Mihail's implementation are:
+- Added keep-alive implementation based on HTTP/1.1 and HTTP/1.0 headers received.
 - Replaced the creation of a Thread when passing the request to the handler with just the Handler, as it is a runnable which is accepted by ThreadPoolExecutor.execute. The overhead removed helped increase the speed of transactions a 400%.
 - Replaced gradle dependency management system with Maven.
 - Added a batch script to compile and execute the server without any dependency management system or IDE.
