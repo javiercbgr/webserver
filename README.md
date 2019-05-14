@@ -1,6 +1,6 @@
-# Web server with thread pooling
+# Web server with thread pooling and HTTP keep-alive
 A multi-threaded (e.g. file-based) web server with thread-pooling
-implemented in Java.
+implemented in Java. Connections will be kept alive based on HTTP headers. 
 
 Forked from warchildmd's thread pooling at GitHub:
 https://github.com/warchildmd/webserver <br/>
