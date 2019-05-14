@@ -26,12 +26,12 @@ I'm using `FileServingApp` (serves static files from a document root) as my hand
 that must be implemented is `HttpResponse handle(HttpRequest request)`.
 
 ### Request flow
-1. Server receives a request.
-2. Server creates a Handler (Runnable) for this request.
-2. Handler parses the request into a HttpRequest.
-3. Handler passes the HttpRequest to the handler application.
+1. Server receives a request through a new connection or an existing keep-alive one.
+2. Server creates a Handler (Runnable) for this request and gives it to the thread of pools.
+2. When a thread is available, it runs the Handler which parses the request into a HttpRequest.
+3. Handler passes the HttpRequest to the web app (e.g. a file-based app).
 4. Handler writes the response received from the handler application to the output stream.
-5. Handler closes the streams.
+5. If the connection is keep-alive the Handler passes it back for future reuse. If not, closes it.
 
 A compiled version `webserver-1.0-SNAPSHOT.jar` can be found in the root directory.
  
