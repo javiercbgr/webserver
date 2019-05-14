@@ -8,12 +8,15 @@ Keep-alive implementation based on jrudolph's at GitHub:
 https://github.com/jrudolph/Pooling-web-server
 
 New features:
-- Added keep-alive implementation based on HTTP/1.1 and HTTP/1.0 headers received.
-- Replaced the creation of a Thread when passing the request to the handler with just the Handler, as it is a runnable which is accepted by ThreadPoolExecutor.execute. The overhead removed helped increase the speed of transactions a 400%.
-- Replaced gradle dependency management system with Maven.
-- Added a batch script to compile and execute the server without any dependency management system or IDE.
-- Added a batch script to load test the server with 20000 requests from 20 processes.
-- Added handling speed monitoring capability implemented using a circular array.
+- Added [keep-alive][1] implementation based on HTTP/1.1 and HTTP/1.0 headers received.
+- Replaced the creation of a Thread when passing the request to the handler with just the Handler, as it is a runnable which is accepted by ThreadPoolExecutor.execute. The overhead removed helped increase the speed of transactions a [400%][2].
+- Replaced gradle dependency management system with [Maven][3].
+- Added handling speed monitoring capability implemented using a [circular array][4].
+- Added a batch script to compile and execute the server [without][5] any dependency management system or IDE.
+- Added a batch script to load test the server with [2000000 requests][6] divided in 20 requester processes.
+- Added a Python script to test the [performance][7] of keep-alive requests.
+- Added a shell bash script to test the [performance][8] of keep-alive request.
+
 
 Ideas I considered good and preserved are:
 - WebApp abstraction, allowing quick implementations of other applications apart from file serving.
@@ -49,3 +52,20 @@ or <br />
 `create_run_server_jar.bat` # Also performs install. <br />
 or <br />
 `java -jar webserver-<version> <port> <threads> <document root>`
+
+## Test
+`mvn verify` # Contains a JUnit test. <br />
+`Your browser at: http://localhost:52052/index.html` <br />
+`load_test.bat` # Windows <br />
+`keep_alive_performance.py` <br />
+`keep_alive_performance.sh` # Mac. For this one, check one of my execution results in _[keep_alive_performance_results.txt][9]_
+
+[1]: https://github.com/javiercbgr/webserver/commit/76bf0bb50e9ed8dca2aa7ba45392b6c0b235482f#diff-9012a3bd029b0988951d42f937c3233c
+[2]: https://github.com/javiercbgr/webserver/commit/725e939238f1cdc5b33740223a57c56b9a926259#diff-9012a3bd029b0988951d42f937c3233c
+[3]: https://github.com/javiercbgr/webserver/blob/master/pom.xml
+[4]: https://github.com/javiercbgr/webserver/blob/master/src/main/java/me/homework/server/helpers/PerformanceStats.java
+[5]: https://github.com/javiercbgr/webserver/blob/master/create_run_server_jar.bat
+[6]: https://github.com/javiercbgr/webserver/blob/master/load_test.bat
+[7]: https://github.com/javiercbgr/webserver/blob/master/keep_alive_performance.py
+[8]: https://github.com/javiercbgr/webserver/blob/master/keep_alive_performance.sh
+[9]: https://github.com/javiercbgr/webserver/blob/master/keep_alive_performance_results.txt
