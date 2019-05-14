@@ -46,8 +46,11 @@ import java.util.Map;
  *  "503" ; Section 10.5.4: Service Unavailable
  *  "504" ; Section 10.5.5: Gateway Time-out
  *  "505" ; Section 10.5.6: HTTP Version not supported
+ *
+ * Created by Mihail on 10/24/2015.
  */
 public class HttpStatus {
+    
     /**
      * Informational 1xx
      */

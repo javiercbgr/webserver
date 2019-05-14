@@ -14,9 +14,7 @@
 
 	<properties>
 		<jdk.version>1.7</jdk.version>
-		<jodatime.version>2.5</jodatime.version>
 		<junit.version>4.11</junit.version>
-		<log4j.version>1.2.17</log4j.version>
 		<htmlunit.version>2.35.0</htmlunit.version>
 	</properties>
 
@@ -26,11 +24,6 @@
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
 		</dependency>
 		<dependency>
     		<groupId>net.sourceforge.htmlunit</groupId>
@@ -59,10 +52,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
-				  <!-- DO NOT include log4j.properties file in your Jar -->
-				  <excludes>
-					<exclude>**/log4j.properties</exclude>
-				  </excludes>
 				  <archive>
 					<manifest>
 						<!-- Jar file entry point -->
@@ -72,6 +61,7 @@
 				</configuration>
 			</plugin>
 
+			<!-- When executing `mvn verify` this will also run the app -->
 	        <plugin>
 	            <groupId>org.codehaus.mojo</groupId>
 	            <artifactId>exec-maven-plugin</artifactId>

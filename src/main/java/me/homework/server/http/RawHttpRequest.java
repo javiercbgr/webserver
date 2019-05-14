@@ -12,14 +12,14 @@ import java.util.HashMap;
  * HTTP Response class used in communication with the client.
  * This class contains the data that will be sent to the client,
  * including status line, headers, and response body.
+ *
+ * Created by Mihail on 10/24/2015.
  */
 public class RawHttpRequest extends HttpResponse {
 
     private String content;
 
     public RawHttpRequest(int statusCode, String content) {
-        super();
-
         this.statusCode = statusCode;
         this.content = content;
     }
@@ -31,7 +31,8 @@ public class RawHttpRequest extends HttpResponse {
      */
     public void write(OutputStream out) {
         try {
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
+            BufferedWriter writer = new BufferedWriter(
+                new OutputStreamWriter(out));
             writer.write(getResponseLine());
             writer.write("\r\n");
 

@@ -9,7 +9,9 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 
 /**
- * HttpResponse extensions that sends a file to the client (e. g. html)
+ * HttpResponse extensions that sends a file to the client (e. g. html).
+ *
+ * Created by Mihail on 10/24/2015.
  */
 public class FileHttpResponse extends HttpResponse {
 
@@ -39,7 +41,8 @@ public class FileHttpResponse extends HttpResponse {
      */
     public void write(OutputStream out) {
         try {
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
+            BufferedWriter writer = new BufferedWriter(
+                new OutputStreamWriter(out));
             writer.write(getResponseLine());
             writer.write("\r\n");
 
@@ -50,7 +53,8 @@ public class FileHttpResponse extends HttpResponse {
             writer.write("\r\n");
 
             if (inputFile != null) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile)));
+                BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(new FileInputStream(inputFile)));
                 char[] buffer = new char[1024];
                 int read;
                 while ((read = reader.read(buffer)) != -1) {

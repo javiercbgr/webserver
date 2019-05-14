@@ -6,12 +6,12 @@ import java.io.*;
 
 /**
  * HttpResponse extension that writes an empty response.
+ * 
+ * Created by Mihail on 10/24/2015.
  */
 public class EmptyHttpResponse extends HttpResponse {
 
     public EmptyHttpResponse(int statusCode) {
-        super();
-
         this.statusCode = statusCode;
     }
 
@@ -22,7 +22,9 @@ public class EmptyHttpResponse extends HttpResponse {
      */
     public void write(OutputStream out) {
         try {
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
+            BufferedWriter writer = new BufferedWriter(
+                new OutputStreamWriter(out));
+            
             writer.write(getResponseLine());
             writer.write("\r\n");
 
@@ -30,8 +32,10 @@ public class EmptyHttpResponse extends HttpResponse {
                 writer.write(key + ":" + headers.get(key));
                 writer.write("\r\n");
             }
+            writer.write("Content-Type: text/html; charset=utf-8\r\n");
+            writer.write("Content-Length: 0\r\n");
             writer.write("\r\n");
-
+            
             writer.flush();
         } catch (IOException e) {
             Logger.error(e.getMessage());

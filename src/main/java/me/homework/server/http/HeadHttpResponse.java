@@ -9,6 +9,8 @@ import java.nio.file.Paths;
 
 /**
  * HttpResponse extension that only writes headers.
+ *
+ * Created by Mihail on 10/24/2015.
  */
 public class HeadHttpResponse extends FileHttpResponse {
 
@@ -28,7 +30,8 @@ public class HeadHttpResponse extends FileHttpResponse {
      */
     public void write(OutputStream out) {
         try {
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
+            BufferedWriter writer = new BufferedWriter(
+                new OutputStreamWriter(out));
             writer.write(getResponseLine());
             writer.write("\r\n");
 

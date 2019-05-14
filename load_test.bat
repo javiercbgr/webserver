@@ -2,6 +2,10 @@
 :: Javier Cabero 2019 (c)
 ::
 :: Load tests the server.
+::
+:: Feel free to change
+:: the file retrieved.
+::
 :: Tested on Windows 10.
 :: ----------------------
 

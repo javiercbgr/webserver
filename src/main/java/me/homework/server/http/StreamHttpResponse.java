@@ -12,6 +12,8 @@ import java.util.HashMap;
  * HTTP Response class used in communication with the client.
  * This class contains the data that will be sent to the client,
  * including status line, headers, and response body.
+ *
+ * Created by Mihail on 10/24/2015.
  */
 public class StreamHttpResponse extends HttpResponse {
 
@@ -33,7 +35,8 @@ public class StreamHttpResponse extends HttpResponse {
      */
     public void write(OutputStream out) {
         try {
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
+            BufferedWriter writer = new BufferedWriter(
+                new OutputStreamWriter(out));
             writer.write(getResponseLine());
             writer.write("\r\n");
 
@@ -44,7 +47,8 @@ public class StreamHttpResponse extends HttpResponse {
             writer.write("\r\n");
 
             if (inputStream != null) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+                BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(inputStream));
                 char[] buffer = new char[1024];
                 int read;
                 while ((read = reader.read(buffer)) != -1) {

@@ -2,7 +2,11 @@
 A multi-threaded (e.g. file-based) web server with thread-pooling
 implemented in Java.
 
-This repository is a fork of Mihail exercise back in 2015. 
+Forked from warchildmd's thread pooling at GitHub:
+https://github.com/warchildmd/webserver
+
+Keep-alive implementation based on jrudolph's at GitHub:
+https://github.com/jrudolph/Pooling-web-server
 
 Main differences with Mihail's implementation are:
 - Replaced the creation of a Thread when passing the request to the handler with just the Handler, as it is a runnable which is accepted by ThreadPoolExecutor.execute. The overhead removed helped increase the speed of transactions a 400%.

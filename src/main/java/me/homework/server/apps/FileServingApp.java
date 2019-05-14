@@ -9,6 +9,8 @@ import java.nio.file.Paths;
 
 /**
  * A static file server application.
+ * 
+ * Created by Mihail on 10/24/2015.
  */
 public class FileServingApp implements WebApp {
 
@@ -28,23 +30,21 @@ public class FileServingApp implements WebApp {
         switch (request.getMethod()) {
             case HttpMethod.GET:
                 Path requestedFile = Paths.get(documentRoot, path);
-                if (requestedFile.normalize().startsWith(Paths.get(documentRoot).normalize())) {
-                    if (Files.exists(requestedFile)) {
-                        if (Files.isDirectory(requestedFile)) {
-                            response = new EmptyHttpResponse(HttpStatus.FORBIDDEN);
-                        } else {
-                            response = new FileHttpResponse(HttpStatus.OK,
-                                    new File(Paths.get(documentRoot, path).toString()));
-                        }
+                if (Files.exists(requestedFile)) {
+                    if (Files.isDirectory(requestedFile)) {
+                        response = new EmptyHttpResponse(HttpStatus.FORBIDDEN);
                     } else {
-                        response = new EmptyHttpResponse(HttpStatus.NOT_FOUND);
+                        response = new FileHttpResponse(HttpStatus.OK,
+                                new File(Paths.get(documentRoot, path)
+                                    .toString()));
                     }
                 } else {
-                    response = new EmptyHttpResponse(HttpStatus.FORBIDDEN);
+                    response = new EmptyHttpResponse(HttpStatus.NOT_FOUND);
                 }
                 break;
             case HttpMethod.TRACE:
-                response = new StreamHttpResponse(HttpStatus.OK, request.getInputStream());
+                response = new StreamHttpResponse(HttpStatus.OK, 
+                                                  request.getInputStream());
                 break;
             case HttpMethod.HEAD:
                 if (Files.exists(Paths.get(documentRoot, path))) {

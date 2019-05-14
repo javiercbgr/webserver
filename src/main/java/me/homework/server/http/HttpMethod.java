@@ -2,6 +2,8 @@ package me.homework.server.http;
 
 /**
  * RFC2616, Section 9
+ *
+ * Created by Mihail on 10/24/2015.
  */
 public class HttpMethod {
 
